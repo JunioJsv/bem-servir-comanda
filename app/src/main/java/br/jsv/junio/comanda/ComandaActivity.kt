@@ -35,4 +35,8 @@ class ComandaActivity : AppCompatActivity(), ComandaInterface{
         }
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onBackPressed() {
+        moveTaskToBack(true)
+    }
 }
