@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.comanda_fragment.view.*
 
-class ComandaFragment(private val establishment: String, private val comandaInterface: ComandaInterface) : Fragment() {
+class ComandaFragment(private val client: String, private val comandaInterface: ComandaInterface) : Fragment() {
     var products: ArrayList<Product> = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -19,13 +19,9 @@ class ComandaFragment(private val establishment: String, private val comandaInte
             context?.let { it1 -> NewProductDialog(it1, products, productAdapter!!).show() }
         }
         fragmentView.print.setOnClickListener {
-            context?.let { it1 -> Print(establishment, products, it1) }
+            context?.let { it1 -> Print(client, products, it1) }
         }
         return fragmentView
     }
 
-    override fun onResume() {
-        super.onResume()
-        if (comandaInterface.mainActionBar()!!.title != establishment) comandaInterface.mainActionBar()!!.title = establishment
-    }
 }

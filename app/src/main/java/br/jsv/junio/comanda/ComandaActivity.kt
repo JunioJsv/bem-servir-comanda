@@ -3,11 +3,10 @@ package br.jsv.junio.comanda
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 
 class ComandaActivity : AppCompatActivity(), ComandaInterface{
-    //private var comandaFragments: ArrayList<ComandaFragment> = ArrayList()
+    private var comandaFragments: ArrayList<ComandaFragment> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,10 +15,6 @@ class ComandaActivity : AppCompatActivity(), ComandaInterface{
 
     override fun changeComandaFragment(fragment: ComandaFragment) {
         supportFragmentManager.beginTransaction().replace(R.id.comanda_fragment, fragment).commit()
-    }
-
-    override fun mainActionBar(): ActionBar? {
-        return supportActionBar
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

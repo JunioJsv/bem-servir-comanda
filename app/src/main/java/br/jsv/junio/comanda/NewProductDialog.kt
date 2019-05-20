@@ -17,8 +17,8 @@ class NewProductDialog(context: Context, private val products: ArrayList<Product
         super.onCreate(savedInstanceState)
         this.window.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT)
         this.add_buttom.setOnClickListener {
-            if (this.amount.text.toString() != "" && this.establishment.text.toString() != "" && this.price.text.toString() != "") {
-                products.add(Product(this.amount.text.toString().toInt(), this.establishment.text.toString(), this.price.text.toString().toDouble()))
+            if (this.amount.text.toString() != "" && this.product.text.toString() != "" && this.price.text.toString() != "") {
+                products.add(Product(this.amount.text.toString().toInt(), this.product.text.toString(), this.price.text.toString().toDouble()))
                 productAdapter.notifyDataSetChanged()
                 this.dismiss()
             } else Toast.makeText(context, "Todos campos são necessarios", Toast.LENGTH_SHORT).show()

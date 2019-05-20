@@ -6,11 +6,11 @@ import android.widget.Toast
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Print(establishment: String, products: ArrayList<Product>, context: Context) {
+class Print(client: String, products: ArrayList<Product>, context: Context) {
     private var total: Double = 0.0
 
     init {
-        val note = StringBuilder("<CENTER><BIG>$establishment<BR>" +
+        val note = StringBuilder("<CENTER><BIG>$client<BR>" +
                 "DATA: ${SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())}<BR>")
 
         for (product in products) {
