@@ -1,7 +1,6 @@
 package br.jsv.junio.comanda
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -24,9 +23,8 @@ class ComandaActivity : AppCompatActivity(), ComandaInterface{
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                Log.d("TAB", tab!!.position.toString())
                 if (comandaFragments.size > 1) {
-                    changeComandaFragment(comandaFragments[tab.position], false)
+                    changeComandaFragment(comandaFragments[tab!!.position], false)
                 }
             }
 
