@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.TableLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.comanda_activity.*
@@ -37,8 +36,8 @@ class ComandaActivity : AppCompatActivity(), ComandaInterface{
     override fun changeComandaFragment(fragment: ComandaFragment, new: Boolean) {
         supportFragmentManager.beginTransaction().replace(R.id.comanda_fragment, fragment).commit()
         if (new) {
-            comandas_tabs.addTab(comandas_tabs.newTab().setText(fragment.client), true)
             comandaFragments.add(fragment)
+            comandas_tabs.addTab(comandas_tabs.newTab().setText(fragment.client), true)
         }
     }
 
