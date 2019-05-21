@@ -18,7 +18,7 @@ class NewComandaDialog(context: Context, val comandaInterface: ComandaInterface)
         this.window.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT)
         this.add_buttom.setOnClickListener {
             if (this.client.text.toString() != "") {
-                comandaInterface.changeComandaFragment(ComandaFragment(this.client.text.toString(), comandaInterface))
+                comandaInterface.changeComandaFragment(ComandaFragment(this.client.text.toString(), comandaInterface), true)
                 this.dismiss()
             } else Toast.makeText(context, "O campo estabelecimento é obrigatorio", Toast.LENGTH_SHORT).show()
         }

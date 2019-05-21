@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.comanda_fragment.view.*
 
-class ComandaFragment(private val client: String, private val comandaInterface: ComandaInterface) : Fragment() {
+class ComandaFragment(val client: String, private val comandaInterface: ComandaInterface) : Fragment() {
     var products: ArrayList<Product> = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

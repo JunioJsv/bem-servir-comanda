@@ -2,5 +2,5 @@ package br.jsv.junio.comanda
 
 interface ComandaInterface {
 
-    fun changeComandaFragment(fragment: ComandaFragment)
+    fun changeComandaFragment(fragment: ComandaFragment, new: Boolean)
 }
