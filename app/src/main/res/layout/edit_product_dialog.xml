@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="24dp">
+
+    <TextView
+            android:text="Editar produto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            style="@style/Base.DialogWindowTitle.AppCompat"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/product"
+            android:hint="Produto" android:layout_marginTop="16dp"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_marginTop="8dp"
+            android:hint="Quantidade" android:id="@+id/amount"
+    />
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/price"
+            android:inputType="numberDecimal" android:hint="Preço"
+            android:layout_marginTop="8dp"
+    />
+
+    <Button
+            android:text="editar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_buttom"
+            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_marginTop="8dp"/>
+</LinearLayout>

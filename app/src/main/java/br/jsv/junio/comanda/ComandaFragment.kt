@@ -28,6 +28,12 @@ class ComandaFragment(val client: String) : Fragment() {
                 deleteSwipe.width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 64f, resources.displayMetrics).toInt()
                 deleteSwipe.setIcon(R.drawable.ic_delete_white)
                 menu!!.addMenuItem(deleteSwipe)
+
+                val editSwipe = SwipeMenuItem(context)
+                editSwipe.background = ColorDrawable(resources.getColor(R.color.colorPrimary))
+                editSwipe.width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 64f, resources.displayMetrics).toInt()
+                editSwipe.setIcon(R.drawable.ic_edit_white)
+                menu.addMenuItem(editSwipe)
             }
         }
 
@@ -39,6 +45,9 @@ class ComandaFragment(val client: String) : Fragment() {
                     0 -> {
                         products.remove(products[position])
                         productAdapter?.notifyDataSetChanged()
+                    }
+                    1 -> {
+                        context?.let { EditProductDialog(it, products[position], productAdapter!!).show() }
                     }
                 }
                 return true
