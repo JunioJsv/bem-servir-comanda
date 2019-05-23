@@ -3,4 +3,9 @@
 
     <item android:title="Nova comanda" android:icon="@drawable/ic_note_add_white" app:showAsAction="ifRoom"
           android:id="@+id/new_comanda"/>
+    <item
+            android:title="Apagar comanda"
+            android:icon="@drawable/ic_delete_forever_white"
+            app:showAsAction="ifRoom"
+            android:id="@+id/delete_comanda"/>
 </menu>
