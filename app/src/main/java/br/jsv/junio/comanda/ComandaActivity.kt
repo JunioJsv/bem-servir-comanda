@@ -1,7 +1,6 @@
 package br.jsv.junio.comanda
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -41,10 +40,12 @@ class ComandaActivity : AppCompatActivity(), ComandaInterface{
         }
     }
 
-    fun deleteComandaFragment(position: Int) {
+    private fun deleteComandaFragment(position: Int) {
         comandas_tabs.removeTabAt(position)
-        supportFragmentManager.beginTransaction().replace(R.id.comanda_fragment, comandaFragments[position]).commit()
-        Log.d("Comanda", comandaFragments[position].client)
+        if (comandaFragments.size > 1) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.comanda_fragment, comandaFragments[comandas_tabs.selectedTabPosition]).commit()
+        } else comanda_fragment.removeAllViews()
         comandaFragments.removeAt(position)
     }
 
