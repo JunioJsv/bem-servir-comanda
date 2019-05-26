@@ -1,6 +1,7 @@
 package br.jsv.junio.comanda
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -24,6 +25,7 @@ class ComandaActivity : AppCompatActivity(), ComandaInterface{
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
+                Log.d("onTabSelected", tab?.position.toString())
                 if (comandaFragments.size > 1) {
                     changeComandaFragment(comandaFragments[tab!!.position], false)
                 }
@@ -42,11 +44,11 @@ class ComandaActivity : AppCompatActivity(), ComandaInterface{
 
     private fun deleteComandaFragment(position: Int) {
         comandas_tabs.removeTabAt(position)
-        if (comandaFragments.size > 1) {
+        comandaFragments.removeAt(position)
+        if (comandaFragments.size >= 1) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.comanda_fragment, comandaFragments[comandas_tabs.selectedTabPosition]).commit()
         } else comanda_fragment.removeAllViews()
-        comandaFragments.removeAt(position)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
