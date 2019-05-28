@@ -6,10 +6,9 @@ import android.view.View
 import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ListView
 import kotlinx.android.synthetic.main.product_view.view.*
 
-class ProductAdapter(private val listView: ListView, private val products: ArrayList<Product>, private val context: Context) : BaseAdapter() {
+class ProductAdapter(private val products: ArrayList<Product>, private val context: Context) : BaseAdapter() {
 
     @SuppressLint("SetTextI18n")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -40,8 +39,4 @@ class ProductAdapter(private val listView: ListView, private val products: Array
         return products.size
     }
 
-    override fun notifyDataSetChanged() {
-        super.notifyDataSetChanged()
-        listView.adapter = this
-    }
 }
