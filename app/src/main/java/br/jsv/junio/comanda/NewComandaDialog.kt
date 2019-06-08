@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import kotlinx.android.synthetic.main.new_comanda_dialog.*
 
-class NewComandaDialog(context: Context, val comandaInterface: ComandaInterface) : Dialog(context) {
+class NewComandaDialog(context: Context, private val comandaInterface: ComandaInterface) : Dialog(context) {
 
     init {
         setContentView(R.layout.new_comanda_dialog)
@@ -15,12 +15,17 @@ class NewComandaDialog(context: Context, val comandaInterface: ComandaInterface)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.window.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT)
-        this.add_buttom.setOnClickListener {
-            if (this.client.text.toString() != "") {
-                comandaInterface.changeComandaFragment(ComandaFragment(this.client.text.toString()), true)
-                this.dismiss()
-            } else Toast.makeText(context, "O campo estabelecimento é obrigatorio", Toast.LENGTH_SHORT).show()
+
+        this.apply {
+            window?.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT)
+
+            add_buttom.setOnClickListener {
+                if (client.text.toString() != "") {
+                    comandaInterface.changeComandaFragment(ComandaFragment(client.text.toString()), true)
+                    dismiss()
+                } else Toast.makeText(context, "O campo estabelecimento é obrigatorio", Toast.LENGTH_SHORT).show()
+            }
         }
+
     }
 }

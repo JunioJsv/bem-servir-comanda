@@ -12,7 +12,7 @@ import com.skydoves.powermenu.MenuAnimation
 import com.skydoves.powermenu.PowerMenu
 import com.skydoves.powermenu.PowerMenuItem
 import kotlinx.android.synthetic.main.comanda_fragment.view.*
-import kotlinx.android.synthetic.main.header_product_view.view.*
+import kotlinx.android.synthetic.main.header_dialog.view.*
 
 class ComandaFragment(val client: String) : Fragment() {
     private var products: ArrayList<Product> = ArrayList()
@@ -22,7 +22,7 @@ class ComandaFragment(val client: String) : Fragment() {
         val fragmentView = inflater.inflate(R.layout.comanda_fragment, container, false)
         val productAdapter = context?.let { ProductAdapter(products, it) }
         val productMenu: PowerMenu = PowerMenu.Builder(context)
-            .setHeaderView(R.layout.header_product_view)
+            .setHeaderView(R.layout.header_dialog)
             .setMenuRadius(10f)
             .setMenuShadow(10f)
             .setAnimation(MenuAnimation.SHOW_UP_CENTER)
@@ -44,20 +44,26 @@ class ComandaFragment(val client: String) : Fragment() {
             productMenu.dismiss()
         }
 
-        fragmentView.fragment_list_view.adapter = productAdapter
-        fragmentView.fragment_list_view.onItemLongClickListener =
-            AdapterView.OnItemLongClickListener { parent, view, position, id ->
-                productMenu.headerView.header_title.text = products[position].name
-                longClickedProduct = products[position]
-                productMenu.showAtLocation(view, Gravity.BOTTOM, 0, 0)
-                true
+        fragmentView.apply {
+            fragment_list_view.apply {
+                adapter = productAdapter
+                onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, view, position, id ->
+                    productMenu.headerView.header_title.text = products[position].name
+                    longClickedProduct = products[position]
+                    productMenu.showAtLocation(view, Gravity.BOTTOM, 0, 0)
+                    true
+                }
             }
-        fragmentView.add_product.setOnClickListener {
-            context?.let { it1 -> NewProductDialog(it1, products, productAdapter!!).show() }
+
+            add_product.setOnClickListener {
+                context?.let { context -> NewProductDialog(context, products, productAdapter!!).show() }
+            }
+
+            print.setOnClickListener {
+                context?.let { context -> Print(client, products, context) }
+            }
         }
-        fragmentView.print.setOnClickListener {
-            context?.let { it1 -> Print(client, products, it1) }
-        }
+
         return fragmentView
     }
 

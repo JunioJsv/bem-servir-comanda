@@ -17,7 +17,7 @@ class ComandaActivity : AppCompatActivity(), ComandaInterface{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.comanda_activity)
-        comandas_tabs.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+        comandas_tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
 

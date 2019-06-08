@@ -15,14 +15,18 @@ class ProductAdapter(private val products: ArrayList<Product>, private val conte
         val productView = inflate(context, R.layout.product_view, null)
 
         if (products[position].amount > 1) {
-            productView.amount_card.visibility = View.VISIBLE
-            productView.amount.text = products[position].amount.toString()
+            productView.apply {
+                amount_card.visibility = View.VISIBLE
+                amount.text = products[position].amount.toString()
+            }
         }
 
-        productView.initial.text = products[position].name.capitalize()[0].toString()
-        productView.name.text = products[position].name
-        productView.price.text = "R$${String.format("%.2f", products[position].price)}"
-        productView.total.text = "R$${String.format("%.2f", products[position].total)}"
+        productView.apply {
+            initial.text = products[position].name.capitalize()[0].toString()
+            name.text = products[position].name
+            price.text = "R$${String.format("%.2f", products[position].price)}"
+            total.text = "R$${String.format("%.2f", products[position].total)}"
+        }
 
         return productView
     }

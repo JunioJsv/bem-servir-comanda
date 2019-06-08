@@ -11,20 +11,21 @@ class Print(client: String, products: ArrayList<Product>, context: Context) {
 
     init {
         val note = StringBuilder("<CENTER><BIG>$client<BR>" +
-                "DATA: ${SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())}<BR>")
-
-        for (product in products) {
-            note.append("${product.amount} - ${product.name} - ${String.format("R$%.2f", product.total)}<BR>")
-            total += product.total
+                "DATA: ${SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())}<BR>"
+        ).apply {
+            products.forEach {
+                append("${it.amount} - ${it.name} - ${String.format("R$%.2f", it.total)}<BR>")
+                total += it.total
+            }
+            append("<MEDIUM2>TOTAL: ${String.format("R$%.2f", total)}<BR><BR>")
         }
 
-        note.append("<MEDIUM2>TOTAL: ${String.format("R$%.2f", total)}<BR><BR>")
-
         try {
-            val printNote: Intent = Intent("pe.diegoveloper.printing")
-            printNote.type = "text/plain"
-            printNote.putExtra(Intent.EXTRA_TEXT, note.toString())
-            context.startActivity(printNote)
+            Intent("pe.diegoveloper.printing").apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, note.toString())
+                context.startActivity(this)
+            }
         } catch (e: Exception) {
             Toast.makeText(context, "É preciso ter o app Quick Pinter", Toast.LENGTH_LONG).show()
         }
